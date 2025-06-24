@@ -1,4 +1,4 @@
-import 'package:e_cook/Pages/home.dart';
+import 'package:e_cook/Pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      theme: ThemeData(
+        fontFamily: 'Poppins', // Font globale du projet
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      // title: 'Flutter Demo',
       color: Colors.white,
-      home: Home(),
+      home: SlpashScreen(),
     );
   }
 }
