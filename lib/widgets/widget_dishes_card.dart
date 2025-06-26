@@ -23,8 +23,9 @@ class WidgetDishesCard extends StatefulWidget {
 class _WidgetDishesCardState extends State<WidgetDishesCard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 45),
+    return SizedBox(
+      width: 165,
+      height: 250,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.center,
@@ -43,6 +44,14 @@ class _WidgetDishesCardState extends State<WidgetDishesCard> {
               decoration: BoxDecoration(
                 color: Color(0xffd9d9d9),
                 borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(0, 0),
+                    spreadRadius: 0,
+                    blurRadius: 10,
+                  ),
+                ],
               ),
               child: Column(
                 children: [
@@ -59,6 +68,7 @@ class _WidgetDishesCardState extends State<WidgetDishesCard> {
                       ),
                       maxLines: 2,
                       softWrap: true,
+                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -113,10 +123,9 @@ class _WidgetDishesCardState extends State<WidgetDishesCard> {
               ),
             ),
           ),
-          Container(
-            alignment: Alignment(50, 0),
-            width: 110,
-            height: 110,
+          // Insertion de l'image de la bouffe ici
+          Positioned(
+            top: 0,
             child: ClipOval(
               child: Image.asset(
                 // Image
@@ -128,7 +137,7 @@ class _WidgetDishesCardState extends State<WidgetDishesCard> {
             ),
           ),
           Positioned(
-            right: -20,
+            right: 8,
             top: 30,
             child: Container(
               width: 50,

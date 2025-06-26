@@ -21,7 +21,7 @@ class AccueilSection extends StatelessWidget {
           WidgetCategoryScroll(name: 'Italian'),
           WidgetCategoryScroll(name: 'Asian'),
           WidgetCategoryScroll(name: 'Chinese'),
-          WidgetCategoryScroll(name: 'American'),
+          // WidgetCategoryScroll(name: 'American'),
 
           //
         ],

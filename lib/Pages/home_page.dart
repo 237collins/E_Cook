@@ -1,9 +1,11 @@
+import 'package:convex_bottom_bar_renew/convex_bottom_bar_renew.dart';
 import 'package:e_cook/Pages/country_foods/all_foods.dart';
 import 'package:e_cook/Pages/country_foods/asian.dart';
 import 'package:e_cook/Pages/country_foods/cameroun_foods.dart';
 import 'package:e_cook/Pages/country_foods/chinese.dart';
 import 'package:e_cook/Pages/country_foods/indian.dart';
 import 'package:e_cook/widgets/widget_Horizontal_Section_Navigator.dart';
+import 'package:e_cook/widgets/widget_bottom_nav.dart';
 import 'package:e_cook/widgets/widget_profile_infos.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +20,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Colors.white, // Couleur du fond
+        activeColor: Colors.teal, // Couleur de l'icône active
+        color: Colors.grey, // Couleur des icônes inactives
+        items: [
+          TabItem(icon: Icons.home, title: 'Home'),
+          TabItem(icon: Icons.map, title: 'Discovery'),
+          TabItem(icon: Icons.add, title: 'Add'),
+          TabItem(icon: Icons.message, title: 'Message'),
+          TabItem(icon: Icons.people, title: 'Profile'),
+        ],
+        onTap: (int i) => print('click index=$i'),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 70),
+        padding: const EdgeInsets.only(top: 70.0, left: 15, right: 15),
         child: Column(
           children: [
             // widget profile infos bar
@@ -103,8 +119,10 @@ class _HomePageState extends State<HomePage> {
                   Indian(),
                   // page 3
                   Asian(),
-                  // pahe 4
+                  // page 4
                   Chinese(),
+                  // page 5
+                  // Chinese(),
                 ],
                 // Personnalisation optionnelle
                 // navigationBarColor: Colors.deepPurple,
@@ -113,6 +131,17 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
+            // SizedBox(height: 20),
+            // InkWell(
+            //   onTap: () {
+            //     setState(() {});
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => WidgetBottomNav()),
+            //     );
+            //   },
+            //   child: Text('Link to nav test'),
+            // ),
             SizedBox(height: 20),
           ],
         ),
