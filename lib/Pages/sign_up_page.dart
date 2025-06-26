@@ -1,3 +1,5 @@
+import 'package:e_cook/Pages/home_page.dart';
+import 'package:e_cook/Pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -213,13 +215,13 @@ class _SignUpPageState extends State<SignUpPage> {
             SizedBox(height: 10),
             // Sign Up Bouton
             InkWell(
-              //  onTap: () {
-              //         setState(() {});
-              //         Navigator.push(
-              //           context,
-              //           MaterialPageRoute(builder: (context) => SignUpPage()),
-              //         );
-              //       },
+              onTap: () {
+                setState(() {});
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 80, vertical: 18),
                 decoration: BoxDecoration(
@@ -230,7 +232,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Sign In',
+                      'Sign Up',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -339,12 +341,21 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 SizedBox(width: 8),
-                Text(
-                  'Sign in',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Color(0xffff9c00),
-                    fontWeight: FontWeight.w500,
+                InkWell(
+                  onTap: () {
+                    setState(() {});
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignInPage()),
+                    );
+                  },
+                  child: Text(
+                    'Sign in',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Color(0xffff9c00),
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
