@@ -1,4 +1,3 @@
-import 'package:e_cook/widgets/widget_category_scroll.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalSectionNavigator extends StatefulWidget {
@@ -49,10 +48,30 @@ class _HorizontalSectionNavigatorState
       _pageController.animateToPage(
         pageIndex,
         duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
+        curve: Curves.easeInOutCirc,
       );
     }
   }
+
+  // Code ajustement
+
+  // void _goToPage(int pageIndex) {
+  //   if (_currentPageIndex > 0) {
+  //     _pageController.nextPage(
+  //       duration: const Duration(milliseconds: 500),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   }
+  // }
+
+  // void _goToPreviousPage(int pageIndex) {
+  //   if (_currentPageIndex < 0) {
+  //     _pageController.previousPage(
+  //       duration: const Duration(milliseconds: 500),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +80,13 @@ class _HorizontalSectionNavigatorState
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(widget.sectionTitles.length, (index) {
               final isSelected = index == _currentPageIndex;
               return TextButton(
                 style: ButtonStyle(
                   padding: WidgetStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 4, vertical: 5),
+                    EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                   ),
                   shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -79,7 +98,7 @@ class _HorizontalSectionNavigatorState
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: 7,
-                    horizontal: 15,
+                    horizontal: 40,
                   ),
                   decoration: BoxDecoration(
                     color: isSelected ? Color(0xff129575) : Colors.white,

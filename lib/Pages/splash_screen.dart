@@ -1,5 +1,7 @@
-import 'package:e_cook/Pages/sign_in_page.dart';
+import 'dart:async';
+import 'package:e_cook/main_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:e_cook/Pages/sign_in_page.dart';
 
 class SlpashScreen extends StatefulWidget {
   const SlpashScreen({super.key});
@@ -10,11 +12,34 @@ class SlpashScreen extends StatefulWidget {
 
 class _SlpashScreenState extends State<SlpashScreen> {
   @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 2), _checkSession);
+  }
+
+  void _checkSession() {
+    bool isLoggedIn = true; // Change ça à true pour tester MainNavigation
+    // Quand tu auras branché la vraie base de données ou l’authentification,
+    // il suffira de remplacer *true* par **false**
+
+    if (isLoggedIn) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => MainNavigation()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => SignInPage()),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      // appBar: AppBar(backgroundColor: Colors.transparent),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SizedBox(
@@ -22,24 +47,21 @@ class _SlpashScreenState extends State<SlpashScreen> {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              ClipRRect(
-                child: Image.asset(
-                  // Image de fond
-                  'assets/profil/bg.png',
-                  fit: BoxFit.cover,
-                  width: screenWidth,
-                  height: screenHeight,
-                ),
+              Image.asset(
+                'assets/profil/bg.png',
+                fit: BoxFit.cover,
+                width: screenWidth,
+                height: screenHeight,
               ),
               Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(top: 110),
+                    padding: const EdgeInsets.only(top: 110),
                     child: Column(
                       children: [
                         Image.asset('assets/profil/icon1.png'),
-                        SizedBox(height: 20),
-                        Text(
+                        const SizedBox(height: 20),
+                        const Text(
                           '100K+ Premium Recipe',
                           style: TextStyle(
                             fontSize: 20,
@@ -50,10 +72,9 @@ class _SlpashScreenState extends State<SlpashScreen> {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                    children: const [
                       SizedBox(
                         width: 275,
                         child: Text(
@@ -71,59 +92,11 @@ class _SlpashScreenState extends State<SlpashScreen> {
                       SizedBox(height: 20),
                       Text(
                         'Simple way to find Tasty Recipe',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          // fontWeight: FontWeight.w500,
-                        ),
+                        style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ],
                   ),
-                  //
-                  SizedBox(height: 60),
-                  //
-                  InkWell(
-                    onTap: () {
-                      setState(() {});
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignInPage()),
-                      );
-                    },
-
-                    child: Container(
-                      width: screenWidth * .65,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 40,
-                        vertical: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xff129575),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Start Cooking',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          Icon(
-                            Icons.arrow_forward,
-                            size: 18,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  //
-                  SizedBox(height: 90),
+                  const SizedBox(height: 150),
                 ],
               ),
             ],

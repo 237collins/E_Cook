@@ -1,11 +1,13 @@
-import 'package:convex_bottom_bar_renew/convex_bottom_bar_renew.dart';
+// import 'package:convex_bottom_bar_renew/convex_bottom_bar_renew.dart';
 import 'package:e_cook/Pages/country_foods/all_foods.dart';
 import 'package:e_cook/Pages/country_foods/asian.dart';
 import 'package:e_cook/Pages/country_foods/cameroun_foods.dart';
 import 'package:e_cook/Pages/country_foods/chinese.dart';
 import 'package:e_cook/Pages/country_foods/indian.dart';
+import 'package:e_cook/Pages/recent_search_page.dart';
 import 'package:e_cook/widgets/widget_Horizontal_Section_Navigator.dart';
-import 'package:e_cook/widgets/widget_bottom_nav.dart';
+// import 'package:e_cook/widgets/widget_bottom_nav.dart';
+import 'package:e_cook/widgets/widget_filter.dart';
 import 'package:e_cook/widgets/widget_profile_infos.dart';
 import 'package:flutter/material.dart';
 
@@ -20,20 +22,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Colors.white, // Couleur du fond
-        activeColor: Colors.teal, // Couleur de l'icône active
-        color: Colors.grey, // Couleur des icônes inactives
-        items: [
-          TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.map, title: 'Discovery'),
-          TabItem(icon: Icons.add, title: 'Add'),
-          TabItem(icon: Icons.message, title: 'Message'),
-          TabItem(icon: Icons.people, title: 'Profile'),
-        ],
-        onTap: (int i) => print('click index=$i'),
-      ),
+      // backgroundColor: Colors.white,
+      // bottomNavigationBar: ConvexAppBar(
+      //   backgroundColor: Colors.white, // Couleur du fond
+      //   activeColor: Colors.teal, // Couleur de l'icône active
+      //   color: Colors.grey, // Couleur des icônes inactives
+      //   items: [
+      //     TabItem(icon: Icons.home, title: 'Home'),
+      //     TabItem(icon: Icons.map, title: 'Discovery'),
+      //     TabItem(icon: Icons.add, title: 'Add'),
+      //     TabItem(icon: Icons.message, title: 'Message'),
+      //     TabItem(icon: Icons.people, title: 'Profile'),
+      //   ],
+      //   onTap: (int i) => print('click index=$i'),
+      // ),
       body: Padding(
         padding: const EdgeInsets.only(top: 70.0, left: 15, right: 15),
         child: Column(
@@ -69,37 +71,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(width: 15),
-                Container(
-                  padding: EdgeInsets.all(9.5),
-                  decoration: BoxDecoration(
-                    color: Color(0xff129575),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(Icons.tune, size: 30, color: Colors.white),
-                ),
+                // Link to FilterPage
+                WidgetFilter(),
+                //
               ],
             ),
             //
-            SizedBox(height: 30),
-
-            // Widget scroll Categories
-            // SingleChildScrollView(
-            //   scrollDirection: Axis.horizontal,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     children: [
-            //       WidgetCategoryScroll(name: 'All'),
-            //       WidgetCategoryScroll(name: 'Indian'),
-            //       WidgetCategoryScroll(name: 'Italian'),
-            //       WidgetCategoryScroll(name: 'Asian'),
-            //       WidgetCategoryScroll(name: 'Chinese'),
-            //       WidgetCategoryScroll(name: 'All'),
-
-            //       //
-            //     ],
-            //   ),
-            // ),
-            // AccueilSection(),
             Expanded(
               child: HorizontalSectionNavigator(
                 sectionTitles: [
@@ -132,16 +109,16 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // SizedBox(height: 20),
-            // InkWell(
-            //   onTap: () {
-            //     setState(() {});
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => WidgetBottomNav()),
-            //     );
-            //   },
-            //   child: Text('Link to nav test'),
-            // ),
+            InkWell(
+              onTap: () {
+                setState(() {});
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RecentSearchPage()),
+                );
+              },
+              child: Text('Link to  test'),
+            ),
             SizedBox(height: 20),
           ],
         ),

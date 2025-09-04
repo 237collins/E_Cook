@@ -1,6 +1,3 @@
-import 'package:e_cook/Pages/country_foods/asian.dart';
-import 'package:e_cook/Pages/country_foods/cameroun_foods.dart';
-import 'package:e_cook/Pages/country_foods/indian.dart';
 import 'package:e_cook/widgets/widget_dishes_card.dart';
 import 'package:e_cook/widgets/widget_new_recipe.dart';
 import 'package:flutter/material.dart';
